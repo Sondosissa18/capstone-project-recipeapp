@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% include 'navigation.html' %}
+<body>
+
+<h1>Here are some suggestions!</h1>
+<br/>
+{% if user.is_authenticated %} 
+
+
+<ul>
+{% for message in messages %}
+<li>
+<strong><a href="/messages/{{message.id}}">{{message.title}}</a></strong> 
+</li> 
+{% endfor %}
+
+
+<br />
+
+<html>
+<style>
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Ubuntu', sans-serif;
+}
+img {
+  width: 225px;
+  height: 225px;
+  box-shadow: 0 0 20px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 10px 10px;
+} 
+.card-body{
+  box-shadow: 0 0 20px 7px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top:auto;
+  text-align: center;
+}
+.card{
+  margin: 10px 10px;
+  width: 225px;
+  height: 225px;
+  text-align: center;
+}
+h1, h3 {
+  margin-left: 30px;
+}
+ body {
+  background-image: linear-gradient(#F9A26C, #EFEEEE, #9BD7D1, #325D79);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+}
+h4 {
+    margin-left: 20px;
+}
+</style> 
+<div class="container text-center">
+<div class="card-deck">
+  <div class="col-md-4">
+    <div class="card text-center">
+      <img src="{{ one_recipe.image.url }}" class="card-img-top">
+        <div class="card-body">
+          <h4 class="card-title">Title: {{ one_recipe.title }}</h4>
+          <p class="card-text">By: {{ one_recipe.author }}</p>
+          <p class="card-text">Items: {{ one_recipe.items }}</p>
+          <p class="card-text">Description: {{ one_recipe.description }}</p>
+    </div>
+    <button><a href="/recipes/{{one_recipe.id}}/">View Recipe</a></button>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="card text-center">
+    <img src="{{ two_recipe.image.url }}" class="card-img-top">
+    <div class="card-body">
+      <h4 class="card-title">Title: {{ two_recipe.title }}</h4>
+      <p class="card-text">By: {{ two_recipe.author }}</p>
+      <p class="card-text">Items: {{ two_recipe.items }}</p>
+      <p class="card-text">Description: {{ two_recipe.description }}</p>
+    </div>
+    <button><a href="/recipes/{{two_recipe.id}}/">View Recipe</a></button>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="card text-center">
+    <img src="{{ three_recipe.image.url }}" class="card-img-top">
+    <div class="card-body">
+      <h4 class="card-title">Title: {{ three_recipe.title }}</h4>
+      <p class="card-text">By: {{ three_recipe.author }}</p>
+      <p class="card-text">Items: {{ three_recipe.items }}</p>
+      <p class="card-text">Description: {{ three_recipe.description }}</p>
+    </div>
+    <button><a href="/recipes/{{three_recipe.id}}/">View Recipe</a></button>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+{% endif %}
+{% endblock content %} 
+
+
+
+
+
+
+
